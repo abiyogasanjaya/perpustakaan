@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Buku;
+use Session;
 
 class BukuController extends Controller
 {
@@ -41,7 +42,6 @@ class BukuController extends Controller
         //
         $request->validate ([
             "judul"=>"required"
-            // "penerbit"=>"required"
         ]);
 
         $buku = Buku::create([
@@ -98,7 +98,7 @@ class BukuController extends Controller
              "tahun"=> $request["tahun"]  
         ]);
 
-        return redirect ('/buku')->with('sukses', 'Data berhasil DiUPDATE');
+        return redirect ('/buku')->with('sukses', 'Data berhasil diupdate');
     }
 
     /**
@@ -111,6 +111,6 @@ class BukuController extends Controller
     {
         //
         Buku::destroy($id);
-        return redirect ('/buku')->with('sukses', 'Data berhasil diHAPUS');
+        return redirect ('/buku')->with('sukses', 'Data berhasil dihapus');
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kategori;
+use Session;
+
 class KategoriController extends Controller
 {
     /**
@@ -39,18 +41,22 @@ class KategoriController extends Controller
     {
         //
         $request->validate ([
-            "nama"=>"required"
-            // "penerbit"=>"required"
+            "kategori"=>"required"
         ]);
 
-        $kategori = Kategori::create([
-            "nama"=> $request["nama"]
-            //  "penerbit"=> $request["penerbit"],
-            //  "pengarang"=> $request["pengarang"], 
-            //  "tahun"=> $request["tahun"]            
-        ]);
-        
-        return redirect ('/kategori')->with('sukses', 'Data berhasil diinput');
+        if (Kategori::where('kategori', '=', $request->kategori)->exists()) {
+            Session::flash('message','Peringatan');
+        } else {
+            $kategori = Kategori::create([
+                "kategori"=> $request["kategori"]       
+            ]);
+            if ($kategori->save()) {
+                Session::flash('message','Sukses');
+            } else {
+                Session::flash('message','Gagal');
+            }
+        }
+        return redirect ('/kategori');
     }
 
     /**
@@ -63,8 +69,8 @@ class KategoriController extends Controller
     {
         //
         $kategori = Kategori::find($id);
-        //    dd($profil);                                 
         return view('kategori.show', compact('kategori'));
+        //    dd($profil);                                 
     }
 
     /**
@@ -90,14 +96,19 @@ class KategoriController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $update = Kategori::where('id', $id)->update([
-            "nama"=> $request["nama"]
-            //  "penerbit"=> $request["penerbit"],
-            //  "pengarang"=> $request["pengarang"], 
-            //  "tahun"=> $request["tahun"]  
-        ]);
-
-        return redirect ('/kategori')->with('sukses', 'Data berhasil DiUPDATE');
+        if (Kategori::where('kategori', '=', $request->kategori)->exists()) {
+            Session::flash('message','Peringatan');
+        } else {
+            $update = Kategori::where('id', $id)->update([
+                "kategori"=> $request["kategori"]
+            ]);
+            if (isset($update)) {
+                Session::flash('message','Sukses');
+            } else {
+                Session::flash('message','Gagal');
+            }
+        }
+        return redirect ('/kategori');
     }
 
     /**
@@ -109,7 +120,12 @@ class KategoriController extends Controller
     public function destroy($id)
     {
         //
-        Kategori::destroy($id);
-        return redirect ('/kategori')->with('sukses', 'Data berhasil diHAPUS');
+        $hapus = Kategori::destroy($id);
+        if (isset($hapus)) {
+            Session::flash('message','Hapus');
+        } else {
+            Session::flash('message','Gagal');
+        }
+        return redirect ('/kategori');
     }
 }

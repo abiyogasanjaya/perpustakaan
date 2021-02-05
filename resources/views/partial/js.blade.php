@@ -22,3 +22,55 @@
 <script src="{{asset('assets/plugins/chartist/js/chartist.min.js')}}"></script>
 <script src="{{asset('assets/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js')}}"></script>
 <script src="{{asset('assets/js/dashboard/dashboard-1.js')}}"></script>
+
+<!-- DATATABLES -->
+<script src="{{asset('assets/js/datatables/jquery-3.5.1.min.js')}}"></script>
+<script>
+$(document).ready(function() {
+    $('#example').DataTable();
+});
+</script>
+
+<!-- SWAL -->
+<script src="{{asset('assets/js/swal/swal.min.js')}}"></script>
+<script type="text/javascript">
+if ("{{Session::get('message')}}" == 'Sukses') {
+    Swal.fire({
+        position: 'inherit',
+        icon: 'success',
+        title: 'Berhasil disimpan',
+        showConfirmButton: false,
+        timer: 2500
+    });
+}
+
+if ("{{Session::get('message')}}" == 'Gagal') {
+    Swal.fire({
+        position: 'inherit',
+        icon: 'error',
+        title: 'Oops... Terjadi kesalahan',
+        showConfirmButton: false,
+        timer: 2500
+    });
+}
+
+if ("{{Session::get('message')}}" == 'Peringatan') {
+    Swal.fire({
+        position: 'inherit',
+        icon: 'warning',
+        title: 'Oops... Gagal disimpan \n' + 'Data yang disimpan telah terdaftar',
+        showConfirmButton: false,
+        timer: 2500
+    });
+}
+
+if ("{{Session::get('message')}}" == 'Hapus') {
+    Swal.fire({
+        position: 'inherit',
+        icon: 'success',
+        title: 'Berhasil dihapus',
+        showConfirmButton: false,
+        timer: 2500
+    });
+}
+</script>
