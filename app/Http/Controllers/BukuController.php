@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+//export Excell
+use App\Exports\bukusExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 use Illuminate\Http\Request;
 use App\Buku;
 use App\Kategori;
@@ -181,5 +186,10 @@ class BukuController extends Controller
             Session::flash('message','Gagal');
         }
         return redirect ('/buku');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new bukusExport, 'listbuku.xlsx');
     }
 }
