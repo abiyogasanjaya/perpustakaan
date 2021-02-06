@@ -8,4 +8,9 @@ class Users extends Model
 {
     //
     protected $table = "users";
+
+    public function profil()
+    {
+        return $this->hasOne('App\Profil','users_id','id');
+    }
 }

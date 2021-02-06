@@ -18,7 +18,9 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="/buku">Daftar Buku</a></li>
+                    @if(Session::get('level_user')==1)
                     <li><a href="/kategori">Kategori Buku</a></li>
+                    @endif
                 </ul>
             </li>
             <li class="nav-label">PENGGUNA</li>

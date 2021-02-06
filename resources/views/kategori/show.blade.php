@@ -5,14 +5,13 @@
 <div class="card">
     <div class="card-body">
         <div class="basic-form">
-            <form action="/kategori" method="POST">
-                @csrf
+            <form>
                 <div class="form-group row">
                     <br>
                     <label class="col-sm-2 col-form-label">Nama Kategori</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control input-default" id="kategori" name="kategori"
-                            value="{{ $kategori->kategori  }}" disabled>
+                            value="{{ $kategori->kategori  }}" readonly>
                     </div>
                 </div>
                 <br>

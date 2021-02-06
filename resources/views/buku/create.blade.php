@@ -19,8 +19,12 @@
                     <br>
                     <label class="col-sm-2 col-form-label">Kategori</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control input-default" id="kategori" name="kategori"
-                            placeholder="Judul Buku" require>
+                        <select class="form-control" id="kategori" name="kategori" required>
+                            <option value="" selected disabled>-- Pilih Kategori --</option>
+                            @foreach ($kategori as $kategori)
+                            <option value="{{$kategori->id}}">{{$kategori->kategori}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <label class="col-sm-2 col-form-label text-center">Tahun Terbit</label>
                     <div class="col-sm-3">

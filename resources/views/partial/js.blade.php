@@ -40,7 +40,7 @@ if ("{{Session::get('message')}}" == 'Sukses') {
         icon: 'success',
         title: 'Berhasil disimpan',
         showConfirmButton: false,
-        timer: 2500
+        timer: 1500
     });
 }
 
@@ -50,7 +50,7 @@ if ("{{Session::get('message')}}" == 'Gagal') {
         icon: 'error',
         title: 'Oops... Terjadi kesalahan',
         showConfirmButton: false,
-        timer: 2500
+        timer: 1500
     });
 }
 
@@ -60,7 +60,17 @@ if ("{{Session::get('message')}}" == 'Peringatan') {
         icon: 'warning',
         title: 'Oops... Gagal disimpan \n' + 'Data yang disimpan telah terdaftar',
         showConfirmButton: false,
-        timer: 2500
+        timer: 1500
+    });
+}
+
+if ("{{Session::get('message')}}" == 'Login') {
+    Swal.fire({
+        position: 'inherit',
+        icon: 'warning',
+        title: 'Maaf Anda belum melakukan login',
+        showConfirmButton: false,
+        timer: 1500
     });
 }
 
@@ -70,7 +80,17 @@ if ("{{Session::get('message')}}" == 'Hapus') {
         icon: 'success',
         title: 'Berhasil dihapus',
         showConfirmButton: false,
-        timer: 2500
+        timer: 1500
+    });
+}
+
+if ("{{Session::get('message')}}" == 'GagalLogin') {
+    Swal.fire({
+        position: 'inherit',
+        icon: 'error',
+        title: 'Oops... Username atau Password Anda Salah',
+        showConfirmButton: false,
+        timer: 1500
     });
 }
 </script>

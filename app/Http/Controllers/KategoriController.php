@@ -8,6 +8,18 @@ use Session;
 
 class KategoriController extends Controller
 {
+    public function noakses(){
+        Session::flash('message', 'Login');
+        return redirect('/');
+    }
+    public function granted(){
+        if (Session::get('login')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +28,12 @@ class KategoriController extends Controller
     public function index()
     {
         //
-        $kategori = Kategori::all();
-        return view('kategori.index', compact ('kategori'));
+        if ($this->granted()){
+            $kategori = Kategori::all();
+            return view('kategori.index', compact ('kategori'));
+        }else {
+            return $this->noakses();
+        }
     }
 
     /**
@@ -28,7 +44,12 @@ class KategoriController extends Controller
     public function create()
     {
         //
-        return view('kategori.create');
+        if ($this->granted()){
+            return view('kategori.create');
+        }else {
+            return $this->noakses();
+        }
+
     }
 
     /**
@@ -68,9 +89,12 @@ class KategoriController extends Controller
     public function show($id)
     {
         //
-        $kategori = Kategori::find($id);
-        return view('kategori.show', compact('kategori'));
-        //    dd($profil);                                 
+        if ($this->granted()){
+            $kategori = Kategori::find($id);
+            return view('kategori.show', compact('kategori'));
+        }else {
+            return $this->noakses();
+        }                               
     }
 
     /**
@@ -82,8 +106,12 @@ class KategoriController extends Controller
     public function edit($id)
     {
         //
-        $kategori = Kategori::find($id);                                   //ORM Model
-        return view('kategori.edit', compact('kategori'));
+        if ($this->granted()){
+            $kategori = Kategori::find($id);                                   //ORM Model
+            return view('kategori.edit', compact('kategori'));
+        }else {
+            return $this->noakses();
+        }
     }
 
     /**
