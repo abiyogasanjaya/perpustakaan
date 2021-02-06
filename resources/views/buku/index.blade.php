@@ -8,6 +8,9 @@
             <a href="{{route('buku.create')}}" class="btn btn-primary btn-block">Tambah Data
                 Buku</a>
         </div>
+        <div class="email-left-box">
+                <a href="/cetak" class="btn btn-success mb-2">Cetak Daftar Buku</a>
+        </div>
         @endif
         <div class="table-responsive">
             <table id="example" class="table table-striped table-bordered zero-configuration">
@@ -27,7 +30,7 @@
                     <tr>
                         <td class="text-center"> {{ $key + 1}} </td>
                         <td> {{ $book->judul }} </td>
-                        <td> {{ $book->penerbit }} </td>
+                        <td> {{ $book->kategori_id }} </td>
                         <td> {{ $book->penerbit }} </td>
                         <td> {{ $book->pengarang }}</td>
                         <td class="text-center"> {{ $book->tahun }}</td>
