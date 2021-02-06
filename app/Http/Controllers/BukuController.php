@@ -4,10 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Buku;
+use App\Kategori;
 use Session;
+use DB;
 
 class BukuController extends Controller
 {
+
+    public function noakses(){
+        Session::flash('message', 'Login');
+        return redirect('/');
+    }
+    public function granted(){
+        if (Session::get('login')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +31,12 @@ class BukuController extends Controller
     public function index()
     {
         //
-        $buku = Buku::all();
-        return view('buku.index', compact ('buku'));
+        if ($this->granted()){
+            $buku = Buku::all();
+            return view('buku.index', compact ('buku'));
+        }else {
+            return $this->noakses();
+        }
     }
 
     /**
@@ -28,7 +47,12 @@ class BukuController extends Controller
     public function create()
     {
         //
-        return view('buku.create');
+        if ($this->granted()){
+            $kategori = Kategori::all();
+            return view('buku.create', compact('kategori'));
+        }else {
+            return $this->noakses();
+        }
     }
 
     /**
@@ -40,18 +64,28 @@ class BukuController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate ([
-            "judul"=>"required"
-        ]);
-
-        $buku = Buku::create([
-            "judul"=> $request["judul"],
-             "penerbit"=> $request["penerbit"],
-             "pengarang"=> $request["pengarang"], 
-             "tahun"=> $request["tahun"]            
-        ]);
-        
-        return redirect ('/buku')->with('sukses', 'Data berhasil diinput');
+        if (Buku::where('judul', '=', $request->judul)
+            ->where('kategori_id', '=', $request->kategori)
+            ->where('penerbit', '=', $request->penerbit)
+            ->where('pengarang', '=', $request->pengarang)
+            ->where('tahun', '=', $request->tahun)
+            ->exists()) {
+            Session::flash('message','Peringatan');
+        } else {
+            $buku = Buku::create([
+                "judul"=> $request["judul"],
+                "kategori_id"=> $request["kategori"],
+                "penerbit"=> $request["penerbit"],
+                "pengarang"=> $request["pengarang"], 
+                "tahun"=> $request["tahun"]            
+            ]);
+            if ($buku->save()) {
+                Session::flash('message','Sukses');
+            } else {
+                Session::flash('message','Gagal');
+            }
+        }    
+        return redirect ('/buku');
     }
 
     /**
@@ -63,9 +97,16 @@ class BukuController extends Controller
     public function show($buku_id)
     {
         //
-        $buku = Buku::find($buku_id);
-        //    dd($profil);                                 
-        return view('buku.show', compact('buku'));
+        if ($this->granted()){
+            $buku = DB::table('bukus')
+                        ->select('bukus.*', 'kategoris.kategori')
+                        ->join('kategoris', 'kategoris.id', '=', 'bukus.kategori_id')
+                        ->where('bukus.id', $buku_id)
+                        ->first();                               
+            return view('buku.show', compact('buku'));
+        }else {
+            return $this->noakses();
+        }
     }
 
     /**
@@ -77,8 +118,17 @@ class BukuController extends Controller
     public function edit($id)
     {
         //
-        $buku = Buku::find($id);                                   //ORM Model
-        return view('buku.edit', compact('buku'));
+        if ($this->granted()){
+            $data['buku'] = DB::table('bukus')
+                            ->select('bukus.*', 'kategoris.kategori', 'kategoris.kategori as id_kat')
+                            ->join('kategoris', 'kategoris.id', '=', 'bukus.kategori_id')
+                            ->where('bukus.id', $id)
+                            ->first();
+            $data ['kategori'] = Kategori::all();
+            return view('buku.edit', $data);
+        }else {
+            return $this->noakses();
+        }
     }
 
     /**
@@ -91,14 +141,28 @@ class BukuController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $update = Buku::where('id', $id)->update([
-            "judul"=> $request["judul"],
-             "penerbit"=> $request["penerbit"],
-             "pengarang"=> $request["pengarang"], 
-             "tahun"=> $request["tahun"]  
-        ]);
-
-        return redirect ('/buku')->with('sukses', 'Data berhasil diupdate');
+        if (Buku::where('judul', '=', $request->judul)
+            ->where('kategori_id', '=', $request->kategori)
+            ->where('penerbit', '=', $request->penerbit)
+            ->where('pengarang', '=', $request->pengarang)
+            ->where('tahun', '=', $request->tahun)
+            ->exists()) {
+            Session::flash('message','Peringatan');
+        } else {
+            $update = Buku::where('id', $id)->update([
+                "judul"=> $request["judul"],
+                "kategori_id"=> $request["kategori"],
+                "penerbit"=> $request["penerbit"],
+                "pengarang"=> $request["pengarang"], 
+                "tahun"=> $request["tahun"]            
+            ]);
+            if (isset($update)) {
+                Session::flash('message','Sukses');
+            } else {
+                Session::flash('message','Gagal');
+            }
+        }    
+        return redirect ('/buku');
     }
 
     /**
@@ -110,7 +174,12 @@ class BukuController extends Controller
     public function destroy($id)
     {
         //
-        Buku::destroy($id);
-        return redirect ('/buku')->with('sukses', 'Data berhasil dihapus');
+        $hapus = Buku::destroy($id);
+        if (isset($hapus)) {
+            Session::flash('message','Hapus');
+        } else {
+            Session::flash('message','Gagal');
+        }
+        return redirect ('/buku');
     }
 }

@@ -3,10 +3,12 @@
 @section('konten')
 <div class="card">
     <div class="card-body">
+        @if(Session::get('level_user')==1)
         <div class="email-left-box">
             <a href="{{route('buku.create')}}" class="btn btn-primary btn-block">Tambah Data
                 Buku</a>
         </div>
+        @endif
         <div class="table-responsive">
             <table id="example" class="table table-striped table-bordered zero-configuration">
                 <thead>
@@ -30,6 +32,7 @@
                         <td> {{ $book->pengarang }}</td>
                         <td class="text-center"> {{ $book->tahun }}</td>
                         <td style="display:flex">
+                            @if(Session::get('level_user')==1)
                             <a href="/buku/{{$book->id}}" type="button" class="btn btn-primary"><i
                                     class="icon-magnifier" alt="Tampil"></i></a>
                             &nbsp;
@@ -38,7 +41,8 @@
                             &nbsp;
                             <a href="#" type="button" class="btn btn-danger"><i class="icon-trash" alt="Hapus"
                                     data-toggle="modal" data-target="#modal-delete-buku{{$book->id}}"></i></a>
-                            @include('kategori.popup')
+                            @include('buku.popup')
+                            @endif
                         </td>
                     </tr>
                     @empty
