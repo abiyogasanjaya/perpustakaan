@@ -107,4 +107,16 @@ class TransaksiController extends Controller
         }
         return redirect ('/pinjam');
     }
+
+    public function destroy($id)
+    {
+        //
+        $hapus = Transaksi::destroy($id);
+        if (isset($hapus)) {
+            Session::flash('message','Hapus');
+        } else {
+            Session::flash('message','Gagal');
+        }
+        return redirect ('/pinjam');
+    }
 }

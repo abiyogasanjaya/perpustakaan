@@ -37,7 +37,10 @@ class BukuController extends Controller
     {
         //
         if ($this->granted()){
-            $buku = Buku::all();
+            $buku = DB::table('bukus')
+                    ->select('bukus.*', 'kategoris.kategori')
+                    ->join('kategoris', 'bukus.id', '=', 'kategoris.id')
+                    ->get();
             return view('buku.index', compact ('buku'));
         }else {
             return $this->noakses();

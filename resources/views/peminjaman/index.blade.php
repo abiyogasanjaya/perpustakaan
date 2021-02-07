@@ -62,10 +62,11 @@
                                     data-toggle="modal"
                                     data-target="#modal-delete-pinjam-user{{$pinjam_user->id}}"></i></a>
                         </td>
+                        @include('peminjaman.popup')
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="4" class="text-center">Tidak Ada Data </td>
+                        <td colspan="6" class="text-center">Tidak Ada Data </td>
                     </tr>
                     @endforelse
                 </tbody>
