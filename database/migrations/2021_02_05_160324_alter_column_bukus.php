@@ -15,7 +15,7 @@ class AlterColumnBukus extends Migration
     {
         //
         Schema::table('bukus', function (Blueprint $table) {
-            $table->text('sampul');
+            $table->text('sampul')->nullable();
             $table->bigInteger('kategori_id')->unsigned();
             $table->foreign('kategori_id')
             ->references('id')

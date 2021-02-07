@@ -49,7 +49,6 @@ class KategoriController extends Controller
         }else {
             return $this->noakses();
         }
-
     }
 
     /**

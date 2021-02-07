@@ -56,4 +56,24 @@ class LoginController extends Controller
         Session::flush();
         return redirect('/');
     }
+
+    public function register(){
+        return view('registerform');
+    }
+
+    public function doregister(Request $request){
+        if (Users::where('email', '=', $request->email)
+                ->exists()) {
+            Session::flash('message','Peringatan');
+        } else {
+            Users::create([ 
+                "name"=> $request["nama"],
+                "email"=> $request["email"],
+                "password"=> md5($request["password"]),
+                "remember_token"=> md5(date('Y-m-d H:i:s').rand(1000,9999)), 
+                "level_user"=> 2           
+            ]);
+        }
+        return redirect('/');
+    }
 }

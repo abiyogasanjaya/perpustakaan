@@ -3,7 +3,7 @@
         <ul class="metismenu" id="menu">
             <li class="nav-label">Beranda</li>
             <li>
-                <a href="/" aria-expanded="false">
+                <a href="/dashboard" aria-expanded="false">
                     <i class="icon-speedometer menu-icon"></i><span class="nav-text">Rumah</span>
                 </a>
             </li>
@@ -23,12 +23,14 @@
                     @endif
                 </ul>
             </li>
+            @if(Session::get('level_user')==1)
             <li class="nav-label">PENGGUNA</li>
             <li>
                 <a href="/pengguna" aria-expanded="false">
                     <i class="icon-people menu-icon"></i><span class="nav-text">Daftar Pengguna</span>
                 </a>
             </li>
+            @endif
         </ul>
     </div>
 </div>

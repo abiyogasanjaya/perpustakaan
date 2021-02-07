@@ -18,8 +18,8 @@ class CreatePeminjamanTables extends Migration
             $table->timestamps();
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');
-            $table->char('status_pinjam', 2);
-            $table->text('keterangan');
+            $table->char('status_pinjam', 2)->nullable();
+            $table->text('keterangan')->nullable();
             $table->bigInteger('users_id')->unsigned();
             $table->bigInteger('bukus_id')->unsigned();
             $table->foreign('users_id')

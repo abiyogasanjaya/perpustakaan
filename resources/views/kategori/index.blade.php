@@ -18,7 +18,7 @@
                         <th>Kategori</th>
                         @if(Session::get('level_user')==1)
                         <th width="5%">Aksi</th>
-                        @enif
+                        @endif
                     </tr>
                 </thead>
                 <tbody>

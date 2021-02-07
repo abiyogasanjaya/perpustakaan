@@ -10,21 +10,26 @@
                             <div class="card-body pt-5">
                                 <h2 class="text-center">PERPUSTAKAAN</h2>
                                 <hr>
-                                <form class="mt-5 mb-5 login-input" method="POST" action="login">
+                                <form class="mt-3 mb-3 login-input" method="POST" action="doregister">
                                     {{csrf_field()}}
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email" name="email">
+                                        <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="Email" name="email"
+                                            required>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control" placeholder="Password"
-                                            name="password">
+                                            name="password" required>
                                     </div>
-                                    <button type="submit" class="btn login-form__btn submit w-100">Masuk</button>
+                                    <button class="btn login-form__btn submit w-100">Daftar</button>
                                 </form>
                                 <hr>
-                                <p class="mt-3 login-form__footer">Belum mempunyai akun | <a href="/register"
-                                        class="text-primary"> Buat
-                                        Akun?</a></p>
+                                <p class="mt-3 login-form__footer">Sudah memiliki akun | <a href="/"
+                                        class="text-primary">Masuk </a>sekarang!</p>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -33,4 +38,4 @@
         </div>
     </div>
     @include('partial.js')
-</body
+</body>
