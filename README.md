@@ -1,23 +1,25 @@
 ## INFORMASI KELOMPOK
-    - KELOMPOK 6
-        - Kharis
-        - I Made Abiyoga Sanjaya
+- KELOMPOK 6
+    - Kharis
+    - I Made Abiyoga Sanjaya
     
-    - TEMA PROJECT
-<b>PERPUSTAKAAN</b>
+- TEMA PROJECT
+    - PERPUSTAKAAN
 
 ## LINK VIDEO DEMO & DOKUMENTASI
-    - LINK VIDEO
-<a href="https://drive.google.com/file/d/1zU2yvMD4iWT1aBrSi9iFgAwu4oGrJitE/view?usp=sharing">VIDEO DEMO KAMI KELOMPOK 6</a>
-    - ERD PERPUSTAKAAN
-<img href="perpustakaan-erd.png" width="600">
-    - TEMPLATE
+- LINK VIDEO
+    - <a href="https://drive.google.com/file/d/1zU2yvMD4iWT1aBrSi9iFgAwu4oGrJitE/view?usp=sharing">VIDEO DEMO KAMI KELOMPOK 6</a>
+<br>
+- ERD PERPUSTAKAAN
+![perpustakaan-erd.png](perpustakaan-erd.png?raw=true)
+<br>
+- TEMPLATE
 <a href="https://themefisher.com/products/quixlab-admin-dashboard-theme/">Quixlab</a>
-    - REQUIREMENT PROJECT
-<img href="perpustakaan-erd.png" width="600">
+<br>
+- REQUIREMENT PROJECT
+![progress.png](progress.png?raw=true)
 
-## LINK DEPLOY HOSTING
-
+## LINK DEPLOY HOSTING (OPTIONAL)
 
 <hr>
 <hr>
