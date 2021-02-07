@@ -4,15 +4,19 @@
 <div class="card">
     <div class="card-body">
         @if(Session::get('level_user')==1)
-        <div class="email-left-box">
-            <a href="{{route('buku.create')}}" class="btn btn-primary btn-block">Tambah Data
-                Buku</a>
-        </div>
-        <div class="email-left-box">
-                <a href="/cetak" class="btn btn-success mb-2">Cetak Daftar Buku</a>
-        </div>
-        <div class="email-left-box">
-                <a href="/export" class="btn btn-dark mb-2">Ekspor Daftar Buku</a>
+        <div class="row">
+            <div class="col-lg-3 col-sm-12">
+                <a href="{{route('buku.create')}}" class="btn btn-primary btn-block">Tambah Data
+                    Buku</a>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+            </div>
+            <div class="col-lg-3 col-sm-12">
+                <a href="/cetak" class="btn btn-warning btn-block">Cetak Daftar Buku (*pdf)</a>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+                <a href="/export" class="btn btn-success btn-block">Ekspor Daftar Buku (*xls)</a>
+            </div>
         </div>
         @endif
         <div class="table-responsive">
