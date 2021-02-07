@@ -178,6 +178,9 @@ return [
         //DOMPDF
         Barryvdh\DomPDF\ServiceProvider::class,
 
+        //Laravel Excell
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ],
 
     /*
@@ -230,6 +233,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         //DOMPDF
         'PDF' => Barryvdh\DomPDF\Facade::class,
+
+        //laravel excell 
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

@@ -11,6 +11,9 @@
         <div class="email-left-box">
                 <a href="/cetak" class="btn btn-success mb-2">Cetak Daftar Buku</a>
         </div>
+        <div class="email-left-box">
+                <a href="/export" class="btn btn-dark mb-2">Ekspor Daftar Buku</a>
+        </div>
         @endif
         <div class="table-responsive">
             <table id="example" class="table table-striped table-bordered zero-configuration">

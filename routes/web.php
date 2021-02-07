@@ -45,6 +45,7 @@ route::get('/buku/{buku_id}/edit', 'BukuController@edit');
 route::put('/buku/{buku_id}', 'BukuController@update');
 route::delete('/buku/{buku_id}', 'BukuController@destroy');
 Route::get('/cetak', 'CetakController@listbuku');
+Route::get('/export', 'BukuController@export');
 
 // route::post('/profil', 'ProfilController@store');
 // route::get('/profil/{pertanyaan_id}', 'ProfilController@show');
