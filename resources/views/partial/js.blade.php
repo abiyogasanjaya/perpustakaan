@@ -23,6 +23,11 @@
 <script src="{{asset('assets/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js')}}"></script>
 <script src="{{asset('assets/js/dashboard/dashboard-1.js')}}"></script>
 
+
+<script src="{{asset('assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}">
+</script>
+<script src="{{asset('assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
+
 <!-- DATATABLES -->
 <script src="{{asset('assets/js/datatables/jquery-3.5.1.min.js')}}"></script>
 <script>

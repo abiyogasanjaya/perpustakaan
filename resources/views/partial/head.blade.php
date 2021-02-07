@@ -13,4 +13,9 @@
     <!-- Custom Stylesheet -->
     <link href="{{asset ('assets/css/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset ('assets/css/datatables/datatables.min.css')}}">
+
+    <link href="{{asset ('assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css')}}" rel="stylesheet">
+    <link
+        href="{{asset ('assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}"
+        rel="stylesheet">
 </head>
