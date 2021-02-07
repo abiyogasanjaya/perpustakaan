@@ -37,7 +37,7 @@
                     <tr>
                         <td class="text-center"> {{ $key + 1}} </td>
                         <td> {{ $book->judul }} </td>
-                        <td> {{ $book->kategori_id }} </td>
+                        <td> {{ $book->kategori }} </td>
                         <td> {{ $book->penerbit }} </td>
                         <td> {{ $book->pengarang }}</td>
                         <td class="text-center"> {{ $book->tahun }}</td>

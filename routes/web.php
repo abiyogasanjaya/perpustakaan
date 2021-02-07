@@ -51,6 +51,7 @@ route::get('/pinjam', 'TransaksiController@index');
 route::get('/pinjam/create','TransaksiController@create')->name('pinjam.create');
 route::post('/pinjam', 'TransaksiController@store');
 route::get('/pinjam/{pinjam_id}', 'TransaksiController@show');
+route::delete('/pinjam/{pinjam_id}', 'TransaksiController@destroy');
 
 
 // route::get('/buku/create','BukuController@create')->name('pengguna.create');

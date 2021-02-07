@@ -32,6 +32,15 @@ class AddUser extends Migration
                 'level_user' => 1,
             )
         );
+        DB::table('users')->insert(
+            array(
+                'name' => 'Anggota Perpustakaan',
+                'email' => 'anggota@gmail.com',
+                'password' => md5('anggota_123_!'),
+                'remember_token' => md5(date('Y-m-d H:i:s').rand(1000,9999)),
+                'level_user' => 2,
+            )
+        );
     }
 
     /**

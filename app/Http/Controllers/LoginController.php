@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Users;
+use App\Buku;
+use App\Transaksi;
 use Session;
 
 class LoginController extends Controller
@@ -19,7 +21,10 @@ class LoginController extends Controller
 
     public function index(){
     	if ($this->islogin()) {
-            return view('dashboard');
+            $data['users'] = Users::where('level_user', '2')->count();
+            $data['buku'] = Buku::count();
+            $data['pinjam'] = Transaksi::count();
+            return view('dashboard', $data);
         } else {
             return view('loginform');
         }
