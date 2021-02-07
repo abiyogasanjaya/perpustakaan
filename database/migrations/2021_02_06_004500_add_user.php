@@ -17,7 +17,7 @@ class AddUser extends Migration
         DB::table('users')->insert(
             array(
                 'name' => 'Abiyoga Sanjaya',
-                'email' => 'coba@gmail.com',
+                'email' => 'abiyoga@gmail.com',
                 'password' => md5('admin_123_!'),
                 'remember_token' => md5(date('Y-m-d H:i:s').rand(1000,9999)),
                 'level_user' => 1,
