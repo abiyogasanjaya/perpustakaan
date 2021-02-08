@@ -7,11 +7,11 @@
     - PERPUSTAKAAN
 
 ## LINK VIDEO DEMO & DOKUMENTASI
-- USER LOGIN DUMMY **(Ubah <at> menjadi @ pada bagian Email)**
-    - Email : **abiyoga<at>gmail.com** | Password : **admin_123_!**   | Role : **Administrator**
-    - Email : **kharis<at>gmail.com**  | Password : **admin_123_!**   | Role : **Administrator**
-    - Email : **anggota<at>gmail.com** | Password : **anggota_123_!** | Role : **Anggota Perpustakaan**
-
+- USER LOGIN DUMMY **(Ubah [at] menjadi @ pada bagian Email)**
+    - Email : **abiyoga[at]gmail.com** | Password : **admin_123_!**   | Role : **Administrator**
+    - Email : **kharis[at]gmail.com**  | Password : **admin_123_!**   | Role : **Administrator**
+    - Email : **anggota[at]gmail.com** | Password : **anggota_123_!** | Role : **Anggota Perpustakaan**
+<br>
 - LINK VIDEO
     - <a href="https://drive.google.com/file/d/1zU2yvMD4iWT1aBrSi9iFgAwu4oGrJitE/view?usp=sharing">VIDEO DEMO KAMI KELOMPOK 6</a>
 <br>
